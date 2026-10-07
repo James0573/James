@@ -2,10 +2,440 @@
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <title>我的个人网站</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Guo Yanheng 的个人主页" />
+    <title>Guo Yanheng · Personal Site</title>
+    <style>
+      :root {
+        --blue: #1769e0;
+        --deep-blue: #0a234d;
+        --light-blue: #eaf3ff;
+        --text: #172033;
+        --muted: #667085;
+        --line: #e5eaf2;
+        --white: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--text);
+        background: #f8fbff;
+        font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+        line-height: 1.7;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1100px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px 0;
+      }
+
+      .brand {
+        color: var(--deep-blue);
+        font-size: 1.2rem;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 24px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .nav-links a:hover {
+        color: var(--blue);
+      }
+
+      .hero {
+        min-height: 560px;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+        gap: 48px;
+        padding: 60px 0 90px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 999px;
+        color: var(--blue);
+        background: var(--light-blue);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin: 18px 0 20px;
+        color: var(--deep-blue);
+        font-size: clamp(3rem, 7vw, 5.5rem);
+        line-height: 1.02;
+        letter-spacing: -0.07em;
+      }
+
+      h2 {
+        color: var(--deep-blue);
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        line-height: 1.15;
+        letter-spacing: -0.045em;
+      }
+
+      .lead {
+        max-width: 590px;
+        color: var(--muted);
+        font-size: 1.12rem;
+      }
+
+      .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .button {
+        display: inline-block;
+        padding: 11px 18px;
+        border: 1px solid var(--blue);
+        border-radius: 9px;
+        color: var(--blue);
+        font-weight: 700;
+      }
+
+      .button.primary {
+        color: var(--white);
+        background: var(--blue);
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 22px rgba(23, 105, 224, 0.2);
+      }
+
+      .hero-card {
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+        border-radius: 32px;
+        color: var(--white);
+        background:
+          radial-gradient(circle at 75% 25%, #8ec7ff 0, transparent 25%),
+          radial-gradient(circle at 25% 75%, #0c4da8 0, transparent 30%),
+          linear-gradient(145deg, #1769e0, #0a234d);
+        box-shadow: 0 25px 55px rgba(10, 35, 77, 0.25);
+      }
+
+      .hero-card strong {
+        font-size: clamp(4rem, 11vw, 7rem);
+        letter-spacing: -0.12em;
+      }
+
+      section {
+        padding: 84px 0;
+      }
+
+      .about {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 65px;
+      }
+
+      .about p,
+      .section-text {
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 24px;
+      }
+
+      .tag {
+        padding: 7px 12px;
+        border: 1px solid #cfe1fb;
+        border-radius: 999px;
+        color: #1357b8;
+        background: var(--light-blue);
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 28px;
+      }
+
+      .section-head p {
+        max-width: 430px;
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .project {
+        min-height: 275px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 26px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--white);
+        transition: 180ms ease;
+      }
+
+      .project:hover {
+        transform: translateY(-5px);
+        border-color: #b9d5f8;
+        box-shadow: 0 18px 38px rgba(30, 77, 132, 0.1);
+      }
+
+      .project-number {
+        color: var(--blue);
+        font-weight: 800;
+      }
+
+      .project p {
+        color: var(--muted);
+      }
+
+      .project a {
+        color: var(--blue);
+        font-weight: 700;
+      }
+
+      .contact {
+        padding: 58px;
+        border-radius: 26px;
+        color: var(--white);
+        background: var(--deep-blue);
+      }
+
+      .contact h2 {
+        color: var(--white);
+      }
+
+      .contact p {
+        max-width: 630px;
+        color: #c5d7f1;
+        font-size: 1.06rem;
+      }
+
+      .contact .button {
+        border-color: #8ec7ff;
+        color: #dceeff;
+      }
+
+      .contact .button.primary {
+        color: #0a234d;
+        background: #8ec7ff;
+      }
+
+      footer {
+        padding: 28px 0 42px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 760px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero,
+        .about {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+
+        .hero {
+          padding: 40px 0 65px;
+        }
+
+        .hero-card {
+          width: min(250px, 100%);
+        }
+
+        .projects {
+          grid-template-columns: 1fr;
+        }
+
+        .section-head {
+          display: block;
+        }
+
+        .contact {
+          padding: 35px 26px;
+        }
+      }
+    </style>
   </head>
+
   <body>
-    <h1>你好，我是你的名字</h1>
-    <p>这是我的个人网站。</p>
+    <header class="container">
+      <nav>
+        <a class="brand" href="#">Guo Yanheng.</a>
+        <div class="nav-links">
+          <a href="#about">关于我</a>
+          <a href="#projects">作品</a>
+          <a href="#contact">联系</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="container hero">
+        <div>
+          <span class="eyebrow">PERSONAL WEBSITE</span>
+          <h1>你好，<br />我是 Guo Yanheng。</h1>
+          <p class="lead">
+            这是我的个人空间，用来记录学习、分享作品，也保存每一次认真完成的小事。
+          </p>
+          <div class="buttons">
+            <a class="button primary" href="#projects">浏览作品</a>
+            <a
+              class="button"
+              href="https://github.com/james0573"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub 主页
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <strong>GY</strong>
+        </div>
+      </section>
+
+      <section id="about" class="container about">
+        <div>
+          <span class="eyebrow">ABOUT ME</span>
+          <h2>持续学习，认真创造。</h2>
+        </div>
+
+        <div>
+          <p>
+            我正在探索技术、创意与互联网的更多可能性。这个网站会逐步记录我的项目、学习笔记和成长轨迹。
+          </p>
+          <div class="skills">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">设计探索</span>
+            <span class="tag">持续学习</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">SELECTED WORK</span>
+            <h2>我的作品。</h2>
+          </div>
+          <p>这里将展示我完成的项目、学习成果和持续打磨中的想法。</p>
+        </div>
+
+        <div class="projects">
+          <article class="project">
+            <span class="project-number">01 / WEBSITE</span>
+            <div>
+              <h3>个人主页</h3>
+              <p>使用 GitHub Pages 创建的第一座互联网小屋。</p>
+            </div>
+            <a
+              href="https://github.com/james0573/james0573.github.io"
+              target="_blank"
+              rel="noreferrer"
+            >
+              查看源码 →
+            </a>
+          </article>
+
+          <article class="project">
+            <span class="project-number">02 / NEXT</span>
+            <div>
+              <h3>下一个项目</h3>
+              <p>这里未来可以放网页、小程序、工具或任何你想展示的作品。</p>
+            </div>
+            <a href="#contact">准备中 →</a>
+          </article>
+
+          <article class="project">
+            <span class="project-number">03 / NOTES</span>
+            <div>
+              <h3>学习笔记</h3>
+              <p>记录课程、书籍、论文和实践中值得留下的思考。</p>
+            </div>
+            <a href="#contact">即将更新 →</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="container">
+        <div class="contact">
+          <span class="eyebrow">GET IN TOUCH</span>
+          <h2>一起做点有意思的事。</h2>
+          <p>
+            欢迎通过 GitHub 与我联系。后续你也可以在这里添加邮箱、微信或其他社交平台链接。
+          </p>
+          <div class="buttons">
+            <a
+              class="button primary"
+              href="https://github.com/james0573"
+              target="_blank"
+              rel="noreferrer"
+            >
+              访问 GitHub
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container">
+      © 2026 Guo Yanheng · Built with GitHub Pages.
+    </footer>
   </body>
 </html>
