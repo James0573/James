@@ -1,112 +1,416 @@
-<!doctype html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="分享一些有趣的。" />
-    <title>Guo Yanheng · Profile</title>
-    <style>
-      :root {
-        --blue: #1769e0;
-        --deep-blue: #0a234d;
-        --light-blue: #eaf3ff;
-        --text: #172033;
-        --muted: #667085;
-        --line: #e5eaf2;
-        --white: #ffffff;
+<!doctype html> <!--HTML5网页声明--> 
+<html lang="zh-CN"> <!-- 语言属性 -->
+  <head> <!-- 网页头部设置（不显示在主页） -->
+    <meta charset="UTF-8" /> <!-- 网页编码：UTF-8（避免乱码） -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- 网页视口设置：宽度为设备宽度，初始缩放比例为1 -->
+    <meta name="description" content="分享一些有趣的。" /> <!-- 网页简介（可能出现在分享） -->
+    <title>Guo Yanheng · Profile</title> <!-- 浏览器显示标题 -->
+    <!-- CSS样式设置 --> <!-- 定义一些颜色方便直接用 -->
+    <style> 
+      :root { 
+        --blue: #1769e0; /* 蓝色 */
+        --deep-blue: #0a234d; /* 深蓝色 */
+        --light-blue: #eaf3ff; /* 浅蓝色 */
+        --text: #172033; /* 文本颜色 */
+        --muted: #667085; /* 柔和颜色 */
+        --line: #e5eaf2; /* 分割线颜色 */
+        --white: #ffffff; /* 白色 */
+      } 
+      
+      * { box-sizing: border-box; } /* 星号代表所有元素，表示元素的宽度和高度包括内边距和边框 */
+      html { scroll-behavior: smooth; } /* 平滑滚动效果，即跳转时将页面滑动过去 */
+      body { /* 网页正文主体样式，没有定义正文大小，属于浏览器默认16px */
+        margin: 0; /* 去掉浏览器外边框空白 */
+        color: var(--text); /* 文本颜色，用了--text变量 */
+        background: #f8fbff; /* 背景颜色 */
+        font-family: "Segoe UI", "Microsoft YaHei", sans-serif; /* 字体设置，优先使用Segoe UI和Microsoft YaHei，若没有则使用sans-serif */
+        line-height: 1.7; /* 行高设置为1.7倍字体大小 */
       }
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body {
-        margin: 0;
-        color: var(--text);
-        background: #f8fbff;
-        font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
-        line-height: 1.7;
+
+      /* 全局链接：继承周围文字颜色，并去掉默认下划线 */
+      a {color: inherit;text-decoration: none;}
+
+      /* 页面内容区：宽度最多 1100px，左右居中，并留出边距 */
+      .container {width: min(1100px, calc(100% - 40px));margin: 0 auto;}
+
+      /* 顶部导航栏：横向排列，内容垂直居中，两端分开 */
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px 0;
       }
-      a { color: inherit; text-decoration: none; }
-      .container { width: min(1100px, calc(100% - 40px)); margin: 0 auto; }
-      nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0; }
-      .brand { color: var(--deep-blue); font-size: 1.2rem; font-weight: 800; letter-spacing: -0.04em; }
-      .nav-links { display: flex; gap: 24px; color: var(--muted); font-size: .95rem; }
-      .nav-links a:hover { color: var(--blue); }
+
+
+/* 一些大文字定义*/
+      /* 左上角的站点名称Guoyanheng */
+      .brand {
+          color: var(--deep-blue);
+          font-size: 1.2rem;
+          font-weight: 800;
+          letter-spacing: -0.04em;
+      }
+      /* 右上角导航链接 */
+      .nav-links {
+        display: flex; /* 横向排列 */
+        gap: 24px; /* 链接之间间隔 24px */
+        color: var(--muted); /* 链接颜色为柔和色 */
+        font-size: 0.95rem; /* 链接字号略小于正文 */
+      }
+      /* 鼠标移到导航链接上时变成主蓝色 */
+      .nav-links a:hover {
+        color: var(--blue);
+      }
+
+      /* 首页首屏：左侧文字、右侧图片或装饰卡片 */
       .hero {
-        min-height: 510px; display: grid; grid-template-columns: 1.2fr .8fr;
-        align-items: center; gap: 48px; padding: 55px 0 85px;
+        min-height: 520px; /* 首屏最小高度 */
+        display: grid;
+        grid-template-columns: 1.4fr 0.6fr; /* 左列约占 60%，右列约占 40% */
+        align-items: center; /* 两列内容垂直居中 */
+        gap: 48px; /* 两列之间的距离 */
+        padding: 55px 0 85px; /* 上、左右、下内边距 */
       }
+
+      /* 小标题标签，例如首屏眉题，标题上面淡蓝色那个胶囊条 */
       .eyebrow {
-        display: inline-block; padding: 6px 12px; border-radius: 999px;
-        color: var(--blue); background: var(--light-blue); font-size: .85rem; font-weight: 700;
+        display: inline-block; /* 让标签宽度随内容变化 */
+        padding: 6px 12px; /* 上下、左右内边距 */
+        border-radius: 999px; /* 大圆角形成胶囊形 */
+        color: var(--blue); /* 文字颜色为主蓝色 */
+        background: var(--light-blue); /* 背景颜色为浅蓝色 */
+        font-size: 0.85rem; /* 字号略小于正文 */
+        font-weight: 700; /* 字体加粗 */
       }
-      h1, h2, h3, p { margin-top: 0; }
-      h1 { margin: 18px 0 20px; color: var(--deep-blue); font-size: clamp(3rem, 7vw, 5.3rem); line-height: 1.03; letter-spacing: -.07em; }
-      h2 { color: var(--deep-blue); font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; letter-spacing: -.045em; }
-      h3 { color: var(--deep-blue); line-height: 1.35; }
-      .lead { max-width: 620px; color: var(--muted); font-size: 1.15rem; }
-      .buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-      .button { display: inline-block; padding: 11px 18px; border: 1px solid var(--blue); border-radius: 9px; color: var(--blue); font-weight: 700; }
-      .button.primary { color: var(--white); background: var(--blue); }
-      .button:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(23,105,224,.2); }
+
+      /* 标题和段落统一去掉浏览器默认的顶部外边距 */
+      h1,h2,h3,p {
+        margin-top: 0; 
+      }
+      /* 页面主标题 */
+      h1 {
+        margin: 18px 0 20px; /* 上、左右、下外边距 */
+        color: var(--deep-blue);
+        font-size: clamp(2rem, 5vw, 4rem); /* 字号随屏幕变化，最小 2rem，最大 4rem */
+        line-height: 1.03; /* 行高 */
+        letter-spacing: 0.02em; /* 字符间距 */
+      }
+      /* 区块标题 */
+      h2 {
+        color: var(--deep-blue);
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        line-height: 1.15;
+        letter-spacing: -0.045em;
+      }
+      /* 项目卡片标题 */
+      h3 {
+        color: var(--deep-blue);
+        line-height: 1.35;
+      }
+      /* 首屏介绍文字 */
+      .lead {
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 1.15rem;
+      }
+
+
+/*按钮*/
+      /* 主页两个跳转按钮 */
+      .buttons {
+        display: flex; /* 横向排列 */
+        flex-wrap: wrap; /* 空间不足时换行 */
+        gap: 25px; /* 按钮之间间隔 25px */
+        margin-top: 28px; /* 按钮区域顶部外边距 */
+      }
+      /* 通用按钮样式 */
+      .button {
+        display: inline-block; /* 让按钮宽度随内容变化 */
+        padding: 11px 18px; /* 上下、左右内边距 */
+        border: 1px solid var(--blue); /* 边框为主蓝色 */
+        border-radius: 9px; /* 圆角边框 */
+        color: var(--blue); /* 文字颜色为主蓝色 */
+        font-weight: 700; /* 字体加粗 */
+      }
+      /* 重点按钮：使用实心蓝色背景 */
+      .button.primary {
+        color: var(--white);
+        background: var(--blue);
+      }
+      /* 鼠标悬停按钮时轻微上移并显示阴影 */
+      .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 22px rgba(23, 105, 224, 0.2);
+      }
+
+/* 首屏右侧的装饰卡片 */
       .hero-card {
-        aspect-ratio: 1; display: grid; place-items: center; border-radius: 32px; color: var(--white);
-        background: radial-gradient(circle at 75% 25%, #8ec7ff 0, transparent 25%),
-          radial-gradient(circle at 25% 75%, #0c4da8 0, transparent 30%), linear-gradient(145deg, #1769e0, #0a234d);
-        box-shadow: 0 25px 55px rgba(10,35,77,.25);
+        aspect-ratio: 1; /* 宽高比例为 1:1 */
+        display: grid; /* 使用网格布局 */
+        place-items: center; /* 内容水平、垂直居中 */
+        border-radius: 32px; /* 圆角边框 */
+        color: var(--white); /* 文字颜色为白色 */
+      /* 叠加两层圆形渐变和一层斜向渐变，形成背景 */
+      background:
+        radial-gradient(circle at 75% 25%, #8ec7ff 0, transparent 25%),
+        radial-gradient(circle at 25% 75%, #0c4da8 0, transparent 30%),
+        linear-gradient(145deg, #1769e0, #0a234d);
+        /* 阴影效果 */
+      box-shadow: 0 25px 55px rgba(10, 35, 77, 0.25);
       }
-      .hero-card strong { font-size: clamp(4rem, 11vw, 7rem); letter-spacing: -.12em; }
-      section { padding: 76px 0; }
-      .about { display: grid; grid-template-columns: .8fr 1.2fr; gap: 65px; }
-      .about p, .section-head p { color: var(--muted); font-size: 1.05rem; }
-      .skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
-      .tag { padding: 7px 12px; border: 1px solid #cfe1fb; border-radius: 999px; color: #1357b8; background: var(--light-blue); font-size: .9rem; font-weight: 600; }
-      .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
-      .section-head p { max-width: 450px; margin: 0; }
-      .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+      /* 装饰卡片里的缩写文字 */
+      .hero-card strong {
+        font-size: clamp(4rem, 11vw, 7rem); /* 字号随屏幕变化，最小 4rem，最大 7rem */
+        letter-spacing: 0.02em; /* 字符间距 */
+      }
+
+
+/*正文部分*/
+      /* 每个主要内容区块的上下留白 */
+      section {
+        padding: 76px 0;
+      }
+      /* 个人介绍区：左右两列布局 */
+      .about {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr; /* 左列约占 40%，右列约占 60% */
+        gap: 65px;
+      }
+      /* 介绍区和区块说明文字的颜色与字号 */
+      .about p,
+      .section-head p {
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+      /* 技能标签容器：横向排列，空间不足时换行 */
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 24px;/* 技能标签与上方文字的间距 */
+      }
+      /* 单个技能标签 */
+      .tag {
+        padding: 7px 12px;
+        border: 1px solid #cfe1fb;
+        border-radius: 999px;
+        color: #1357b8;
+        background: var(--light-blue);
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+      /* 区块标题行：标题和说明分列，底部对齐 */
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 28px;
+      }
+      /* 每个分区右上角那个灰色说明文字 */
+      .section-head p { /*区块说明文字的最大宽度*/
+        max-width: 450px;
+        margin: 0;
+      }
+
+
+/*项目卡片*/
+      /* 项目卡片网格：一列布局，卡片间隔 18px */
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 三列布局，每列宽度相等 */
+        gap: 18px;
+      }
+      /* 单张项目卡片 */
       .project {
-        min-height: 255px; display: flex; flex-direction: column; justify-content: space-between;
-        padding: 26px; border: 1px solid var(--line); border-radius: 18px; background: var(--white); transition: 180ms ease;
+        min-height: 50px; /* 卡片最小高度 */
+        display: flex;
+        flex-direction: column; /* 卡片内容从上到下排列 */
+        justify-content: normal; /* 在卡片内分散内容 */
+        padding: 22px; /* 卡片内边距 */
+        border: 1px solid var(--line); /* 卡片边框颜色为分割线色 */
+        border-radius: 18px; /* 卡片圆角 */
+        background: var(--white); /* 卡片背景为白色 */
+        transition: 180ms ease; /* 让悬停动画平滑 */
       }
-      .project:hover { transform: translateY(-4px); border-color: #b9d5f8; box-shadow: 0 18px 38px rgba(30,77,132,.1); }
-      .project-number { color: var(--blue); font-size: .9rem; font-weight: 800; }
-      .project p { margin-bottom: 0; color: var(--muted); }
-      .project a { align-self: flex-start; margin-top: 20px; color: var(--blue); font-weight: 700; }
-      .education { color: var(--muted); font-size: .98rem; }
-      .contact { padding: 50px; border-radius: 26px; color: var(--white); background: var(--deep-blue); }
-      .contact h2 { color: var(--white); }
-      .contact p { max-width: 630px; color: #c5d7f1; font-size: 1.06rem; }
-      .contact .button { border-color: #8ec7ff; color: #dceeff; }
-      .contact .button.primary { color: #0a234d; background: #8ec7ff; }
-      footer { padding: 28px 0 42px; color: var(--muted); font-size: .9rem; }
+      /* 让整张项目卡片成为链接，同时保留卡片原有外观 */
+      .project-link {
+        color: inherit;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .project-link:focus-visible {
+        outline: 3px solid var(--blue);
+        outline-offset: 4px;
+      }
+      /* 鼠标悬停项目卡片时的效果 */
+      .project:hover {
+        transform: translateY(-4px);
+        border-color: #b9d5f8;
+        box-shadow: 0 18px 38px rgba(30, 77, 132, 0.1);
+      }
+      /* 项目卡片顶部的小编号或分类文字 */
+      .project-number {
+        color: var(--blue);
+        font-size: 0.9rem; /* 字号略小于正文 */
+        font-weight: 800; /* 字体加粗 */
+      }
+      /* 项目卡片标题旁的分类胶囊 */
+      .project-meta {
+        display: flex;
+        align-items: center;/* 让编号和分类胶囊垂直居中 */
+        flex-wrap: wrap;/* 空间不足时换行 */
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+      .project-tag { /*分类胶囊文字*/
+        display: inline-block;/* 让胶囊宽度随内容变化 */
+        padding: 3px 10px;
+        border-radius: 999px;
+        font-size: 0.76rem;
+        line-height: 1.6;
+        font-weight: 700;
+      }
+      /* 不同分类胶囊的颜色和背景 */
+      .tag-deep-learning { color: #b42318; background: #fee4e2; }/*文字颜色为深红色，背景为浅红色*/
+      .tag-antenna { color: #067647; background: #d1fadf; }
+      .tag-python { color: #b54708; background: #ffead5; }
+      .tag-circuit { color: #175cd3; background: #d1e9ff; }
+      .tag-1 { color: #49cff7; background: #d1e9ff; }
+      .tag-2 { color: #f16cfb; background: #d1e9ff; }
+      
+      /* 卡片项目详情页 */
+      .project-detail { display: none; }
+      .project-detail.active { display: block; }
+      .detail-back { display: inline-block; margin-bottom: 28px; color: var(--blue); font-weight: 700; }
+      .detail-title { margin: 18px 0; }
+      .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 28px; }
+      .detail-panel { padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--white); }
+      .detail-panel h3 { margin-bottom: 12px; }
+      .detail-panel a { color: var(--blue); font-weight: 700; }
+      .detail-panel p:last-child { margin-bottom: 0; }
+      .detail-placeholder { color: var(--muted); font-size: .92rem; }
+      .detail-code { overflow-x: auto; padding: 18px; border-radius: 12px; color: #e6edf3; background: #101828; font-size: .88rem; }
+      .detail-media-placeholder { display: grid; min-height: 180px; place-items: center; padding: 20px; border: 1px dashed #b9d5f8; border-radius: 12px; color: var(--muted); background: #f8fbff; text-align: center; }
+      .detail-media { width: 100%; margin-top: 14px; border-radius: 12px; }
+      /* 项目描述文字 */
+      .project p {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      /* 项目卡片里的链接 */
+      .project a {
+        align-self: flex-start;
+        margin-top: 20px;
+        color: var(--blue);
+        font-weight: 700;
+      }
+
+/* 教育经历文字 */
+      .education {
+        color: var(--muted);
+        font-size: 0.98rem;
+      }
+/* 联系区域：深色背景和较大的内边距 */
+      .contact {
+        padding: 50px;
+        border-radius: 26px;
+        color: var(--white);
+        background: var(--deep-blue);
+      }
+      /* 联系区域里的标题 */
+      .contact h2 {
+        color: var(--white);
+      }
+      /* 联系区域里的说明文字 */
+      .contact p {
+        max-width: 630px;
+        color: #c5d7f1;
+        font-size: 1.06rem;
+      }
+      /* 联系区域里的普通按钮 */
+      .contact .button {
+        border-color: #8ec7ff;
+        color: #dceeff;
+      }
+      /* 联系区域里的重点按钮 */
+      .contact .button.primary {
+        color: #0a234d;
+        background: #8ec7ff;
+      }
+
+/* 页面底部 */
+      footer {
+        padding: 28px 0 42px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+
+/* 屏幕宽度不超过 760px 时，使用手机布局 */
       @media (max-width: 760px) {
-        .nav-links { display: none; }
-        .hero, .about { grid-template-columns: 1fr; gap: 32px; }
-        .hero { padding: 40px 0 60px; }
-        .hero-card { width: min(250px, 100%); }
-        .projects { grid-template-columns: 1fr; }
-        .section-head { display: block; }
-        .section-head p { margin-top: 12px; }
-        .contact { padding: 35px 26px; }
+        /* 手机上隐藏顶部导航链接 */
+        .nav-links {
+          display: none;
+        }
+        /* 首屏和介绍区改为单列 */
+        .hero,
+        .about {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        /* 调整手机上的首屏留白 */
+        .hero {
+          padding: 40px 0 60px;
+        }
+        /* 限制装饰卡片宽度 */
+        .hero-card {
+          width: min(250px, 100%);
+        }
+        /* 项目卡片改为单列 */
+        .projects {
+          grid-template-columns: 1fr;
+        }
+        .detail-grid { grid-template-columns: 1fr; }
+        /* 区块标题和说明改为上下排列 */
+        .section-head {
+          display: block;
+        }
+        /* 给区块说明与标题之间增加间距 */
+        .section-head p {
+          margin-top: 12px;
+        }
+        /* 缩小手机上联系区域的内边距 */
+        .contact {
+          padding: 35px 26px;
+        }
       }
-    </style>
-  </head>
-  <body>
-    <header class="container">
-      <nav>
-        <a class="brand" href="#">Guo Yanheng.</a>
-        <div class="nav-links">
-          <a href="#projects">项目经历</a>
+    </style> <!-- 内联 CSS 样式结束 -->
+  </head> <!--这是head元素的结束标记，表示网页头部设置结束-->
+
+
+  <!--所有的class类别名在css中已经定义过-->
+  <body> <!-- 网页正文开始 -->
+    <header class="container"> <!-- 顶部导航栏容器，使用container类限制宽度并居中 -->
+      <nav> <!-- 导航栏开始,nav意思是导航 -->
+        <a class="brand" href="#">Guo Yanheng</a> <!-- 左上角站点名称，点击返回主页，a意思是超链接，brand是品牌链接的类名，href是链接地址 -->
+        <div class="nav-links"> <!-- 右上角导航链接容器，使用nav-links类,div意思是分组 -->
+          <a href="#projects">项目经历</a>  <!--#后面的文字跟后面section的id对应就可以-->
           <a href="#internships">实习经历</a>
           <a href="#research">学术成果</a>
           <a href="#contact">联系</a>
         </div>
       </nav>
-    </header>
-    <main>
-      <section class="container hero">
-        <div>
+    </header><!-- 顶部导航栏结束 -->
+
+
+    <main><!-- 网页主要内容开始 -->
+      <section class="container hero"> <!-- 首屏内容区，使用container类限制宽度并居中，hero类表示首屏 -->
+        <div><!-- 左侧文字内容区 -->
           <span class="eyebrow">PROJECTS &amp; RESEARCH</span>
-          <h1>项目与课题。</h1>
-          <p class="lead">这里记录参与的研究课题、工程项目与阶段性成果。</p>
+          <h1>你好，<br/>欢迎参观我的个人主页</h1>
+          <p class="lead">分享一些有趣的成果和小爱好</p>
           <div class="buttons">
             <a class="button primary" href="#projects">浏览项目</a>
             <a class="button" href="https://github.com/James0573" target="_blank" rel="noreferrer">GitHub 主页</a>
@@ -115,58 +419,74 @@
         <div class="hero-card"><strong>GY</strong></div>
       </section>
 
-      <section id="projects" class="container">
+      <!-- 语法解释：一个项目区域，里面有区块标题；标题下面有一个容器，放项目标题、描述和分类标签 
+      <section>
+        <h2>项目经历</h2>
+        <div>
+          <h3>波束优化算法</h3>
+          <p>介绍这个项目。</p>
+          <span>深度学习</span>
+        </div>
+      </section> -->
+
+
+      <section id="projects" class="container"><!-- 项目经历区块，使用container类限制宽度并居中 -->
         <div class="section-head">
-          <div><span class="eyebrow">PROJECT EXPERIENCE</span><h2>项目经历。</h2></div>
-          <p>从算法建模、天线设计到可部署的广电工程方案。</p>
+          <div><span class="eyebrow">PROJECT EXPERIENCE</span><h2>项目经历</h2></div>
+          <p>做过的一些小项目，涉及深度学习、python辅助开发、天线设计和视频技术等领域</p>
         </div>
         <div class="projects">
-          <article class="project">
-            <span class="project-number">2025.10 — 至今 · 毕业设计</span>
-            <div><h3>基于 AI 的相控阵波束指向优化</h3><p>以毫米波天线阵列为对象，构建辐射方向图仿真数据集，探索 AI-GC 轻量化网络，实现用户位置到波束参数的端到端映射。负责 HFSS 数据集构建、模型训练和波束指向测试优化。</p></div>
-          </article>
-          <article class="project">
-            <span class="project-number">2024.12 — 2025.06 · 设计负责人</span>
-            <div><h3>广播级摄像机 Tally 提示灯触发电路</h3><p>面向 SONY HDC-2580 讯道摄像机设计红绿双色提示灯触发电路，完成整体方案、连接介质选型、焊接、CAD 制图和现场测试。方案已投入校内近 10 场转播使用。</p></div>
-          </article>
-          <article class="project">
-            <span class="project-number">2024.03 — 2025.03 · 第一作者</span>
-            <div><h3>宽带毫米波磁电偶极子天线阵列</h3><p>面向移动通信应用负责项目推进、天线设计与参数优化。通过贴片结构调整、SIW 馈电和介质基板开槽提升核心性能，研究成果发表于 IEEE 国际会议。</p></div>
-            <a href="https://doi.org/10.1109/iWRFAT65352.2025.11103090" target="_blank" rel="noreferrer">查看论文 DOI →</a>
-          </article>
-          <article class="project">
-            <span class="project-number">2024.03 — 2025.03 · 第三作者</span>
-            <div><h3>极化转换宽带圆极化微带天线</h3><p>参与天线仿真、论文撰写与成果汇报。研究成果发表于 IEEE 国际会议。</p></div>
-            <a href="https://doi.org/10.1109/iWRFAT65352.2025.11103043" target="_blank" rel="noreferrer">查看论文 DOI →</a>
-          </article>
+          <a class="project project-link" href="#detail-beamforming">
+            <div class="project-meta">
+              <span class="project-number">毕业设计</span>
+              <span class="project-tag tag-deep-learning">深度学习</span>
+              <span class="project-tag tag-antenna">天线</span>
+              <span class="project-tag tag-python">Python</span>
+            </div>
+            <div>
+              <h3>基于MLP神经网络的相控阵波束指向优化算法</h3>
+              <p>基于深度学习探索天线波束指向优化流程。</p>
+            </div>
+          </a>
+          <a class="project project-link" href="#detail-tally"><div class="project-meta"><span class="project-number">设计负责人</span><span class="project-tag tag-circuit">电路</span></div><div><h3>广播级摄像机Tally提示灯触发电路</h3><p>为电视转播设计并投入使用的提示灯触发方案。</p></div></a>
+          <a class="project project-link" href="#detail-millimeter-antenna"><div class="project-meta"><span class="project-number">第一作者</span><span class="project-tag tag-antenna">天线</span></div><div><h3>宽带毫米波磁电偶极子天线阵列</h3><p>面向移动通信应用开展天线设计与参数优化。</p></div></a>
+          <a class="project project-link" href="#detail-polarization-antenna"><div class="project-meta"><span class="project-number">第三作者</span><span class="project-tag tag-antenna">天线</span></div><div><h3>极化转换宽带圆极化微带天线</h3><p>参与仿真与论文协作的天线研究项目。</p></div></a>
+          <a class="project project-link" href="#detail-course-script"><div class="project-meta"><span class="project-number">个人工具</span><span class="project-tag tag-python">Python</span></div><div><h3>选课流程自动化辅助脚本</h3><p>用于课程信息处理与选课流程辅助的 Python 脚本。</p></div></a>
+          <a class="project project-link" href="#detail-court-script"><div class="project-meta"><span class="project-number">个人工具</span><span class="project-tag tag-python">Python</span></div><div><h3>羽毛球场地预约辅助脚本</h3><p>用于场地预约流程辅助的 Python 脚本。</p></div></a>
         </div>
       </section>
 
+
+
+
       <section id="internships" class="container">
         <div class="section-head">
-          <div><span class="eyebrow">INTERNSHIP &amp; ENGINEERING</span><h2>实习与工程实践。</h2></div>
-          <p>参与赛事转播和大型活动的视频技术保障，熟悉现场信号链路与设备运行。</p>
+          <div><span class="eyebrow">INTERNSHIP &amp; ENGINEERING</span><h2>实习、工程实践经历</h2></div>
+          <p>干过的一些实习与工程项目，国家级项目和大厂经历受益匪浅</p>
         </div>
         <div class="projects">
           <article class="project">
             <span class="project-number">2025.08 — 2025.09 · 视频技术工程师</span>
-            <div><h3>纪念抗战胜利 80 周年活动</h3><p>驻守中央广播电视总台梅地亚新闻中心，负责新闻发布会、阅兵盛典及文艺晚会的公共信号切换、调度和全链路分发；使用眼图、示波器等设备进行巡检与故障排查。</p></div>
+            <div><h3>纪念抗战胜利80周年活动</h3><p>驻守中央广播电视总台梅地亚新闻中心，负责新闻发布会、阅兵盛典及文艺晚会的公共信号切换、调度和全链路分发；使用眼图、示波器等设备进行巡检与故障排查。</p></div>
           </article>
           <article class="project">
-            <span class="project-number">2026.03 — 2026.06 · 实习</span>
-            <div><h3>北京快手科技有限公司</h3><p>音视频技术部实习经历。</p></div>
+            <span class="project-number">2026.03 — 2026.06 · 音视频技术部</span>
+            <div><h3>北京快手科技有限公司</h3><p>在音视频技术部，负责流媒体平台播控</p></div>
           </article>
           <article class="project">
             <span class="project-number">2024.07 — 2024.09 · 视频技术工程师助理</span>
-            <div><h3>上海东方传媒技术有限公司（SMT）</h3><p>参与 2024 中超上海、杭州赛区无线微波信号传送系统搭建配置，负责收发端铺设及频率调试校准；学习大型转播车基带/IP 化架构和微波系统现场应用。</p></div>
+            <div><h3>上海东方传媒技术有限公司（SMT）</h3><p>参与2024中超上海、杭州赛区无线微波信号传送系统搭建配置，负责收发端铺设及频率调试校准；学习大型转播车基带/IP 化架构和微波系统现场应用。</p></div>
           </article>
         </div>
       </section>
 
+
+
+
       <section id="research" class="container">
         <div class="section-head">
-          <div><span class="eyebrow">ACADEMIC OUTPUT</span><h2>学术成果。</h2></div>
-          <p>IEEE 国际会议论文，均发表于 2025 iWRF&amp;AT 并被 EI 检索。</p>
+          <div><span class="eyebrow">ACADEMIC OUTPUT</span><h2>学术成果</h2></div>
+          <p>发刊了，该蹭茶歇了</p>
         </div>
         <div class="projects">
           <article class="project">
@@ -182,6 +502,9 @@
         </div>
       </section>
 
+
+
+
       <section id="contact" class="container">
         <div class="contact">
           <span class="eyebrow">CONTACT</span>
@@ -190,7 +513,86 @@
           <div class="buttons"><a class="button primary" href="https://github.com/James0573" target="_blank" rel="noreferrer">访问 GitHub</a></div>
         </div>
       </section>
+      
+
+      
     </main>
+    <!-- 项目详情视图：地址栏中的 detail- ID 会加载对应项目内容。 -->
+    <section id="project-detail" class="container project-detail" aria-live="polite">
+      <a class="detail-back" href="#projects">← 返回项目经历</a>
+      <div id="project-detail-content"></div>
+    </section>
+    <script>
+      const projectInfo = {
+        beamforming: {
+          title: "基于 MLP 神经网络的相控阵波束指向优化算法",
+          category: "深度学习", categoryClass: "tag-deep-learning",
+          lead: "毕业设计 · 利用神经网络建立用户位置与波束参数之间的映射。",
+          overview: "以毫米波天线阵列为对象，构建辐射方向图仿真数据集，探索轻量化网络用于波束指向优化。",
+          role: "负责 HFSS 仿真数据整理、训练集构建、模型训练和波束指向测试优化。可继续补充模型结构、实验设置和量化结果。"
+        },
+        tally: {
+          title: "广播级摄像机 Tally 提示灯触发电路",
+          category: "电路", categoryClass: "tag-circuit",
+          lead: "面向广播电视转播场景设计并投入使用的提示灯触发方案。",
+          overview: "针对 SONY HDC-2580 讯道摄像机设计红绿双色 Tally 提示灯触发电路，使调度机位切换时可同步触发摄像机指示灯。",
+          role: "负责整体电路布局与原理构思、连接线介质选材、焊接、CAD 制图和现场测试。方案已用于校内近 10 场转播。"
+        },
+        "millimeter-antenna": {
+          title: "宽带毫米波磁电偶极子天线阵列",
+          category: "天线", categoryClass: "tag-antenna",
+          lead: "第一作者 · 面向移动通信应用的天线设计与参数优化研究。",
+          overview: "研究宽带毫米波磁电偶极子天线单元及阵列，探索贴片结构、SIW 馈电和介质基板开槽等设计对性能的影响。",
+          role: "负责项目推进、天线设计、参数优化、论文撰写与会议汇报。论文发表于 IEEE 2025 iWRF&AT 并被 EI 检索。",
+          doi: "https://doi.org/10.1109/iWRFAT65352.2025.11103090"
+        },
+        "polarization-antenna": {
+          title: "极化转换宽带圆极化微带天线",
+          category: "天线", categoryClass: "tag-antenna",
+          lead: "第三作者 · 基于极化转换的宽带圆极化微带天线研究。",
+          overview: "围绕极化转换和宽带圆极化微带天线开展设计与仿真研究。",
+          role: "参与仿真、论文撰写协作和成果汇报。论文发表于 IEEE 2025 iWRF&AT 并被 EI 检索。",
+          doi: "https://doi.org/10.1109/iWRFAT65352.2025.11103043"
+        },
+        "course-script": {
+          title: "选课流程自动化辅助脚本",
+          category: "Python", categoryClass: "tag-python",
+          lead: "个人工具 · 用于学习和选课流程辅助。",
+          overview: "为天津大学选课网站编写的流程辅助脚本。可继续补充使用场景、功能边界和当前维护状态。",
+          role: "可介绍脚本模块、输入输出、异常处理和使用方式。展示代码前请移除账号凭据、令牌和个人信息。"
+        },
+        "court-script": {
+          title: "羽毛球场地预约辅助脚本",
+          category: "Python", categoryClass: "tag-python",
+          lead: "个人工具 · 用于场地预约流程辅助。",
+          overview: "为中国传媒大学羽毛球场地系统编写的流程辅助脚本。可继续补充功能介绍和停止维护的原因。",
+          role: "可介绍脚本处理流程、技术难点和实际使用反馈。展示代码前请移除账号凭据、令牌和个人信息。"
+        }
+      };
+      function showProjectFromHash() {
+        const key = location.hash.startsWith("#detail-") ? location.hash.slice(8) : "";
+        const project = projectInfo[key];
+        const detail = document.getElementById("project-detail");
+        document.querySelector("main").hidden = Boolean(project);
+        detail.classList.toggle("active", Boolean(project));
+        if (!project) {
+          if (key) history.replaceState(null, "", "#projects");
+          return;
+        }
+        const doi = project.doi ? `<p><a href="${project.doi}" target="_blank" rel="noreferrer">查看论文 DOI →</a></p>` : "";
+        document.getElementById("project-detail-content").innerHTML = `
+          <span class="project-tag ${project.categoryClass}">${project.category}</span>
+          <h2 class="detail-title">${project.title}</h2>
+          <p class="lead">${project.lead}</p>
+          <div class="detail-grid">
+            <article class="detail-panel"><h3>项目内容</h3><p>${project.overview}</p><h3>负责工作与说明</h3><p>${project.role}</p>${doi}</article>
+            <article class="detail-panel"><h3>代码与资料</h3><p class="detail-placeholder">把代表性代码或技术资料放在这里，注意不要包含密钥或个人信息。</p><pre class="detail-code"><code>// 在这里粘贴项目代码</code></pre></article>
+            <article class="detail-panel"><h3>图片与视频</h3><div class="detail-media-placeholder">添加图片：将文件放入项目目录后，用 &lt;img class="detail-media" src="images/图片名.png" alt="图片说明"&gt; 替换此提示。<br><br>添加视频：用 &lt;video class="detail-media" controls src="media/视频名.mp4"&gt;&lt;/video&gt; 替换此提示。</div></article>
+          </div>`;
+      }
+      window.addEventListener("hashchange", showProjectFromHash);
+      showProjectFromHash();
+    </script>
     <footer class="container">© 2026 Guo Yanheng · Built with GitHub Pages.</footer>
   </body>
 </html>
