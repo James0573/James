@@ -81,6 +81,7 @@
         background: var(--light-blue); /* 背景颜色为浅蓝色 */
         font-size: 0.85rem; /* 字号略小于正文 */
         font-weight: 700; /* 字体加粗 */
+        margin-bottom: 12px; /* 与下方内容留出 12px */
       }
 
       /* 标题和段落统一去掉浏览器默认的顶部外边距 */
@@ -276,7 +277,7 @@
       .tag-antenna { color: #067647; background: #d1fadf; }
       .tag-python { color: #b54708; background: #ffead5; }
       .tag-circuit { color: #175cd3; background: #d1e9ff; }
-      .tag-1 { color: #49cff7; background: #d1e9ff; }
+      .tag-videotec { color: #ea61ff; background: #f2cdff; }
       .tag-2 { color: #f16cfb; background: #d1e9ff; }
       
       /* 卡片项目详情页 */
@@ -408,12 +409,13 @@
     <main><!-- 网页主要内容开始 -->
       <section class="container hero"> <!-- 首屏内容区，使用container类限制宽度并居中，hero类表示首屏 -->
         <div><!-- 左侧文字内容区 -->
-          <span class="eyebrow">PROJECTS &amp; RESEARCH</span>
+          <span class="eyebrow">Personal Profile</span>
           <h1>你好，<br/>欢迎参观我的个人主页</h1>
-          <p class="lead">分享一些有趣的成果和小爱好</p>
+          <p class="lead">分享一些有趣的成果和小爱好，网站架构基于 HTML、CSS 和 JavaScript </p>
           <div class="buttons">
-            <a class="button primary" href="#projects">浏览项目</a>
-            <a class="button" href="https://github.com/James0573" target="_blank" rel="noreferrer">GitHub 主页</a>
+            <a class="button primary" href="https://github.com/James0573" target="_blank" rel="noreferrer">GitHub 主页</a>
+            <a class="button" href="#projects">浏览项目</a>
+            <a class="button" href="#photography">摄影作品</a>
           </div>
         </div>
         <div class="hero-card"><strong>GY</strong></div>
@@ -486,7 +488,7 @@
       <section id="research" class="container">
         <div class="section-head">
           <div><span class="eyebrow">ACADEMIC OUTPUT</span><h2>学术成果</h2></div>
-          <p>发刊了，该蹭茶歇了</p>
+          <p>发刊了，蹭茶歇</p>
         </div>
         <div class="projects">
           <article class="project">
@@ -509,8 +511,20 @@
         <div class="contact">
           <span class="eyebrow">CONTACT</span>
           <h2>欢迎交流合作。</h2>
-          <p>欢迎通过 GitHub 联系我，交流通信工程、射频天线、人工智能与广播电视技术相关机会和项目。</p>
+          <p>欢迎通过 GitHub 联系我，交流通信、天线、人工智能与广播电视技术相关机会和项目。</p>
           <div class="buttons"><a class="button primary" href="https://github.com/James0573" target="_blank" rel="noreferrer">访问 GitHub</a></div>
+        </div>
+      </section>
+
+
+      <section id="photography" class="container">
+        <div class="contact">
+          
+          <div>
+            <span class="eyebrow">PHOTOGRAPHY</span>
+            <h2>摄影作品</h2>
+          </div>
+          <p>拍过的一些照片，主要是风光和人像</p>
         </div>
       </section>
       
