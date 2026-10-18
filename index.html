@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Guo Yanheng 的个人主页" />
-    <title>Guo Yanheng · Personal Site</title>
+    <meta name="description" content="郭彦恒的个人主页：通信工程、射频天线与视频技术实践。" />
+    <title>郭彦恒 · 通信工程与射频天线</title>
     <style>
       :root {
         --blue: #1769e0;
@@ -15,15 +15,8 @@
         --line: #e5eaf2;
         --white: #ffffff;
       }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
       body {
         margin: 0;
         color: var(--text);
@@ -31,460 +24,183 @@
         font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
         line-height: 1.7;
       }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      .container {
-        width: min(1100px, calc(100% - 40px));
-        margin: 0 auto;
-      }
-
-      nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 24px 0;
-      }
-
-      .brand {
-        color: var(--deep-blue);
-        font-size: 1.2rem;
-        font-weight: 800;
-        letter-spacing: -0.04em;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 24px;
-        color: var(--muted);
-        font-size: 0.95rem;
-      }
-
-      .nav-links a:hover {
-        color: var(--blue);
-      }
-
+      a { color: inherit; text-decoration: none; }
+      .container { width: min(1100px, calc(100% - 40px)); margin: 0 auto; }
+      nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0; }
+      .brand { color: var(--deep-blue); font-size: 1.2rem; font-weight: 800; letter-spacing: -0.04em; }
+      .nav-links { display: flex; gap: 24px; color: var(--muted); font-size: .95rem; }
+      .nav-links a:hover { color: var(--blue); }
       .hero {
-        min-height: 560px;
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        align-items: center;
-        gap: 48px;
-        padding: 60px 0 90px;
+        min-height: 510px; display: grid; grid-template-columns: 1.2fr .8fr;
+        align-items: center; gap: 48px; padding: 55px 0 85px;
       }
-
       .eyebrow {
-        display: inline-block;
-        padding: 6px 12px;
-        border-radius: 999px;
-        color: var(--blue);
-        background: var(--light-blue);
-        font-size: 0.85rem;
-        font-weight: 700;
+        display: inline-block; padding: 6px 12px; border-radius: 999px;
+        color: var(--blue); background: var(--light-blue); font-size: .85rem; font-weight: 700;
       }
-
-      h1,
-      h2,
-      h3,
-      p {
-        margin-top: 0;
-      }
-
-      h1 {
-        margin: 18px 0 20px;
-        color: var(--deep-blue);
-        font-size: clamp(3rem, 7vw, 5.5rem);
-        line-height: 1.02;
-        letter-spacing: -0.07em;
-      }
-
-      h2 {
-        color: var(--deep-blue);
-        font-size: clamp(2rem, 4vw, 2.8rem);
-        line-height: 1.15;
-        letter-spacing: -0.045em;
-      }
-
-      .lead {
-        max-width: 590px;
-        color: var(--muted);
-        font-size: 1.12rem;
-      }
-
-      .buttons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 28px;
-      }
-
-      .button {
-        display: inline-block;
-        padding: 11px 18px;
-        border: 1px solid var(--blue);
-        border-radius: 9px;
-        color: var(--blue);
-        font-weight: 700;
-      }
-
-      .button.primary {
-        color: var(--white);
-        background: var(--blue);
-      }
-
-      .button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 22px rgba(23, 105, 224, 0.2);
-      }
-
+      h1, h2, h3, p { margin-top: 0; }
+      h1 { margin: 18px 0 20px; color: var(--deep-blue); font-size: clamp(3rem, 7vw, 5.3rem); line-height: 1.03; letter-spacing: -.07em; }
+      h2 { color: var(--deep-blue); font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; letter-spacing: -.045em; }
+      h3 { color: var(--deep-blue); line-height: 1.35; }
+      .lead { max-width: 620px; color: var(--muted); font-size: 1.15rem; }
+      .buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+      .button { display: inline-block; padding: 11px 18px; border: 1px solid var(--blue); border-radius: 9px; color: var(--blue); font-weight: 700; }
+      .button.primary { color: var(--white); background: var(--blue); }
+      .button:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(23,105,224,.2); }
       .hero-card {
-        aspect-ratio: 1;
-        display: grid;
-        place-items: center;
-        border-radius: 32px;
-        color: var(--white);
-        background:
-          radial-gradient(circle at 75% 25%, #8ec7ff 0, transparent 25%),
-          radial-gradient(circle at 25% 75%, #0c4da8 0, transparent 30%),
-          linear-gradient(145deg, #1769e0, #0a234d);
-        box-shadow: 0 25px 55px rgba(10, 35, 77, 0.25);
+        aspect-ratio: 1; display: grid; place-items: center; border-radius: 32px; color: var(--white);
+        background: radial-gradient(circle at 75% 25%, #8ec7ff 0, transparent 25%),
+          radial-gradient(circle at 25% 75%, #0c4da8 0, transparent 30%), linear-gradient(145deg, #1769e0, #0a234d);
+        box-shadow: 0 25px 55px rgba(10,35,77,.25);
       }
-
-      .hero-card strong {
-        font-size: clamp(4rem, 11vw, 7rem);
-        letter-spacing: -0.12em;
-      }
-
-      section {
-        padding: 84px 0;
-      }
-
-      .about {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 65px;
-      }
-
-      .about p,
-      .section-text {
-        color: var(--muted);
-        font-size: 1.05rem;
-      }
-
-      .skills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-top: 24px;
-      }
-
-      .tag {
-        padding: 7px 12px;
-        border: 1px solid #cfe1fb;
-        border-radius: 999px;
-        color: #1357b8;
-        background: var(--light-blue);
-        font-size: 0.9rem;
-        font-weight: 600;
-      }
-
-      .section-head {
-        display: flex;
-        align-items: end;
-        justify-content: space-between;
-        gap: 24px;
-        margin-bottom: 28px;
-      }
-
-      .section-head p {
-        max-width: 430px;
-        margin: 0;
-        color: var(--muted);
-      }
-
-      .projects {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 18px;
-      }
-
+      .hero-card strong { font-size: clamp(4rem, 11vw, 7rem); letter-spacing: -.12em; }
+      section { padding: 76px 0; }
+      .about { display: grid; grid-template-columns: .8fr 1.2fr; gap: 65px; }
+      .about p, .section-head p { color: var(--muted); font-size: 1.05rem; }
+      .skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+      .tag { padding: 7px 12px; border: 1px solid #cfe1fb; border-radius: 999px; color: #1357b8; background: var(--light-blue); font-size: .9rem; font-weight: 600; }
+      .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+      .section-head p { max-width: 450px; margin: 0; }
+      .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
       .project {
-        min-height: 275px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 26px;
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        background: var(--white);
-        transition: 180ms ease;
+        min-height: 255px; display: flex; flex-direction: column; justify-content: space-between;
+        padding: 26px; border: 1px solid var(--line); border-radius: 18px; background: var(--white); transition: 180ms ease;
       }
-
-      .project:hover {
-        transform: translateY(-5px);
-        border-color: #b9d5f8;
-        box-shadow: 0 18px 38px rgba(30, 77, 132, 0.1);
-      }
-
-      .project-number {
-        color: var(--blue);
-        font-weight: 800;
-      }
-
-      .project p {
-        color: var(--muted);
-      }
-
-      .project a {
-        color: var(--blue);
-        font-weight: 700;
-      }
-
-      .contact {
-        padding: 58px;
-        border-radius: 26px;
-        color: var(--white);
-        background: var(--deep-blue);
-      }
-
-      .contact h2 {
-        color: var(--white);
-      }
-
-      .contact p {
-        max-width: 630px;
-        color: #c5d7f1;
-        font-size: 1.06rem;
-      }
-
-      .contact .button {
-        border-color: #8ec7ff;
-        color: #dceeff;
-      }
-
-      .contact .button.primary {
-        color: #0a234d;
-        background: #8ec7ff;
-      }
-
-      footer {
-        padding: 28px 0 42px;
-        color: var(--muted);
-        font-size: 0.9rem;
-      }
-
+      .project:hover { transform: translateY(-4px); border-color: #b9d5f8; box-shadow: 0 18px 38px rgba(30,77,132,.1); }
+      .project-number { color: var(--blue); font-size: .9rem; font-weight: 800; }
+      .project p { margin-bottom: 0; color: var(--muted); }
+      .project a { align-self: flex-start; margin-top: 20px; color: var(--blue); font-weight: 700; }
+      .education { color: var(--muted); font-size: .98rem; }
+      .contact { padding: 50px; border-radius: 26px; color: var(--white); background: var(--deep-blue); }
+      .contact h2 { color: var(--white); }
+      .contact p { max-width: 630px; color: #c5d7f1; font-size: 1.06rem; }
+      .contact .button { border-color: #8ec7ff; color: #dceeff; }
+      .contact .button.primary { color: #0a234d; background: #8ec7ff; }
+      footer { padding: 28px 0 42px; color: var(--muted); font-size: .9rem; }
       @media (max-width: 760px) {
-        .nav-links {
-          display: none;
-        }
-
-        .hero,
-        .about {
-          grid-template-columns: 1fr;
-          gap: 32px;
-        }
-
-        .hero {
-          padding: 40px 0 65px;
-        }
-
-        .hero-card {
-          width: min(250px, 100%);
-        }
-
-        .projects {
-          grid-template-columns: 1fr;
-        }
-
-        .section-head {
-          display: block;
-        }
-
-        .contact {
-          padding: 35px 26px;
-        }
+        .nav-links { display: none; }
+        .hero, .about { grid-template-columns: 1fr; gap: 32px; }
+        .hero { padding: 40px 0 60px; }
+        .hero-card { width: min(250px, 100%); }
+        .projects { grid-template-columns: 1fr; }
+        .section-head { display: block; }
+        .section-head p { margin-top: 12px; }
+        .contact { padding: 35px 26px; }
       }
     </style>
   </head>
-
   <body>
     <header class="container">
       <nav>
         <a class="brand" href="#">Guo Yanheng.</a>
         <div class="nav-links">
-          <a href="#about">关于我</a>
-          <a href="#education">教育</a>
-          <a href="#experience">经历</a>
-          <a href="#projects">项目</a>
-          <a href="#honors">荣誉</a>
+          <a href="#about">简介</a>
+          <a href="#projects">项目经历</a>
+          <a href="#internships">实习经历</a>
+          <a href="#research">学术成果</a>
           <a href="#contact">联系</a>
         </div>
       </nav>
     </header>
-
     <main>
       <section class="container hero">
         <div>
-          <span class="eyebrow">通信工程 · 射频天线 · AI</span>
-          <h1>你好，<br />我是 Guo Yanheng。</h1>
-          <p class="lead">
-            通信工程专业本科生，关注毫米波天线、射频电磁与人工智能的交叉应用。喜欢把理论研究、工程实践和真实场景连接起来。
-          </p>
+          <span class="eyebrow">通信工程 · 射频天线 · 视频技术</span>
+          <h1>你好，<br />我是郭彦恒。</h1>
+          <p class="lead">通信工程背景，聚焦毫米波天线、射频电磁与智能波束优化。具备从仿真建模、方案设计到现场部署和系统保障的项目实践经验。</p>
           <div class="buttons">
-            <a class="button primary" href="#projects">浏览作品</a>
-            <a
-              class="button"
-              href="https://github.com/james0573"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub 主页
-            </a>
+            <a class="button primary" href="#projects">查看项目经历</a>
+            <a class="button" href="https://github.com/James0573" target="_blank" rel="noreferrer">GitHub 主页</a>
           </div>
         </div>
-
-        <div class="hero-card">
-          <strong>GY</strong>
-        </div>
+        <div class="hero-card"><strong>GY</strong></div>
       </section>
 
       <section id="about" class="container about">
+        <div><span class="eyebrow">PROFILE</span><h2>研究与工程实践并重。</h2></div>
         <div>
-          <span class="eyebrow">ABOUT ME</span>
-          <h2>让通信技术落到真实场景。</h2>
-        </div>
-
-        <div>
-          <p>
-            我毕业于中国传媒大学通信工程专业，持续探索射频天线、电磁仿真与智能算法。研究之外，我也参与大型活动公共信号调度、转播系统搭建和现场技术保障。
-          </p>
+          <p>毕业于中国传媒大学通信工程专业。研究方向涵盖毫米波天线设计、电磁仿真与机器学习；工程实践涉及大型活动公共信号调度、赛事转播微波链路和广电设备电路设计。</p>
           <div class="skills">
-            <span class="tag">Python</span>
-            <span class="tag">MATLAB</span>
-            <span class="tag">HFSS</span>
-            <span class="tag">Multisim</span>
-            <span class="tag">机器学习</span>
-            <span class="tag">毫米波天线</span>
-            <span class="tag">视频与转播技术</span>
+            <span class="tag">Python</span><span class="tag">MATLAB</span><span class="tag">HFSS</span>
+            <span class="tag">Multisim</span><span class="tag">机器学习</span><span class="tag">毫米波天线</span>
+            <span class="tag">微波传输</span><span class="tag">视频信号调度</span>
           </div>
-        </div>
-      </section>
-
-      <section id="education" class="container">
-        <div class="section-head">
-          <div><span class="eyebrow">EDUCATION</span><h2>教育经历。</h2></div>
-          <p>通信工程背景，持续关注信息与通信技术的工程应用。</p>
-        </div>
-        <article class="project">
-          <span class="project-number">2022.09 — 2026.06</span>
-          <div><h3>中国传媒大学</h3><p>通信工程 · 本科<br />专业成绩：84/100<br />主修通信原理、信号与系统、数字信号处理、机器学习、电磁波与电磁场、天线与电波传播等。</p></div>
-        </article>
-      </section>
-
-      <section id="experience" class="container">
-        <div class="section-head">
-          <div><span class="eyebrow">FIELD EXPERIENCE</span><h2>工程实践。</h2></div>
-          <p>在高要求的现场环境中参与信号调度、系统搭建与技术保障。</p>
-        </div>
-        <div class="projects">
-          <article class="project">
-            <span class="project-number">2025.08 — 2025.09 · 视频技术工程师</span>
-            <div><h3>纪念抗战胜利 80 周年活动</h3><p>驻守中央广播电视总台梅地亚新闻中心，承担公共信号切换、调度与全链路分发；使用眼图、示波器等设备开展巡检和故障排查。</p></div>
-          </article>
-          <article class="project">
-            <span class="project-number">2024.07 — 2024.09 · SMT 实习</span>
-            <div><h3>大型体育赛事转播</h3><p>参与中超上海、杭州赛区无线微波信号传送系统搭建与配置，包括收发端铺设、频率调试校准，并学习转播车基带/IP 化系统架构。</p></div>
-          </article>
-          <article class="project">
-            <span class="project-number">2024.12 — 2025.06 · 设计负责人</span>
-            <div><h3>广播电视 Tally 提示灯电路</h3><p>面向 SONY HDC-2580 摄像机设计提示灯触发电路，完成电路构思、焊接、CAD 制图和现场测试，已投入校内近 10 场转播使用。</p></div>
-          </article>
+          <p class="education">中国传媒大学 · 通信工程 · 本科（2022—2026）</p>
         </div>
       </section>
 
       <section id="projects" class="container">
         <div class="section-head">
-          <div>
-            <span class="eyebrow">SELECTED WORK</span>
-            <h2>我的作品。</h2>
-          </div>
-          <p>围绕天线设计、智能波束优化与电磁仿真开展研究和实践。</p>
+          <div><span class="eyebrow">PROJECT EXPERIENCE</span><h2>项目经历。</h2></div>
+          <p>从算法建模、天线设计到可部署的广电工程方案。</p>
         </div>
-
         <div class="projects">
           <article class="project">
-            <span class="project-number">01 / AI · 毕业设计 · 2025 — 至今</span>
-            <div><h3>AI 相控阵波束指向优化</h3><p>基于 HFSS 真实仿真数据构建训练集，探索 AI-GC 轻量化网络，实现从用户位置信息到波束参数的映射，并持续优化训练损失与指向精度。</p></div>
-            <a href="https://github.com/James0573" target="_blank" rel="noreferrer">GitHub 主页 →</a>
+            <span class="project-number">2025.10 — 至今 · 毕业设计</span>
+            <div><h3>基于 AI 的相控阵波束指向优化</h3><p>以毫米波天线阵列为对象，构建辐射方向图仿真数据集，探索 AI-GC 轻量化网络，实现用户位置到波束参数的端到端映射。负责 HFSS 数据集构建、模型训练和波束指向测试优化。</p></div>
           </article>
           <article class="project">
-            <span class="project-number">02 / IEEE · 第一作者 · 2025</span>
-            <div><h3>宽带毫米波磁电偶极子天线阵列</h3><p>面向移动通信应用开展天线设计与参数优化，研究贴片结构、SIW 馈电和介质基板开槽。论文发表于 2025 iWRF&amp;AT，并被 EI 检索。</p></div>
+            <span class="project-number">2024.12 — 2025.06 · 设计负责人</span>
+            <div><h3>广播级摄像机 Tally 提示灯触发电路</h3><p>面向 SONY HDC-2580 讯道摄像机设计红绿双色提示灯触发电路，完成整体方案、连接介质选型、焊接、CAD 制图和现场测试。方案已投入校内近 10 场转播使用。</p></div>
+          </article>
+          <article class="project">
+            <span class="project-number">2024.03 — 2025.03 · 第一作者</span>
+            <div><h3>宽带毫米波磁电偶极子天线阵列</h3><p>面向移动通信应用负责项目推进、天线设计与参数优化。通过贴片结构调整、SIW 馈电和介质基板开槽提升核心性能，研究成果发表于 IEEE 国际会议。</p></div>
             <a href="https://doi.org/10.1109/iWRFAT65352.2025.11103090" target="_blank" rel="noreferrer">查看论文 DOI →</a>
           </article>
           <article class="project">
-            <span class="project-number">03 / IEEE · 第三作者 · 2025</span>
-            <div><h3>极化转换宽带圆极化微带天线</h3><p>参与仿真验证、论文撰写与成果汇报。论文发表于 2025 iWRF&amp;AT，并被 EI 检索。</p></div>
+            <span class="project-number">2024.03 — 2025.03 · 第三作者</span>
+            <div><h3>极化转换宽带圆极化微带天线</h3><p>参与天线仿真、论文撰写与成果汇报。研究成果发表于 IEEE 国际会议。</p></div>
             <a href="https://doi.org/10.1109/iWRFAT65352.2025.11103043" target="_blank" rel="noreferrer">查看论文 DOI →</a>
-          </article>
-          <article class="project">
-            <span class="project-number">04 / 电路设计 · 2024 — 2025</span>
-            <div><h3>广电 Tally 提示灯触发电路</h3><p>为广播级讯道摄像机设计红绿双色提示灯触发方案，并在校内多场转播中投入使用。</p></div>
-            <a href="#experience">了解实践经历 →</a>
-          </article>
-        </div>
-            <a href="#contact">准备中 →</a>
-          </article>
-
-          <article class="project">
-            <span class="project-number">03 / NOTES</span>
-            <div>
-              <h3>学习笔记</h3>
-              <p>记录课程、书籍、论文和实践中值得留下的思考。</p>
-            </div>
-            <a href="#contact">即将更新 →</a>
           </article>
         </div>
       </section>
 
-      <section id="honors" class="container">
+      <section id="internships" class="container">
         <div class="section-head">
-          <div><span class="eyebrow">RECOGNITION</span><h2>荣誉与成果。</h2></div>
-          <p>持续投入学术研究、创新实践与团队协作。</p>
+          <div><span class="eyebrow">INTERNSHIP &amp; ENGINEERING</span><h2>实习与工程实践。</h2></div>
+          <p>参与赛事转播和大型活动的视频技术保障，熟悉现场信号链路与设备运行。</p>
         </div>
         <div class="projects">
-          <article class="project"><span class="project-number">2025</span><div><h3>科研与竞赛</h3><p>美国大学生数学建模竞赛 S 奖；中国国际大学生创新大赛北京赛区三等奖；“大唐杯”北京赛区三等奖。</p></div></article>
-          <article class="project"><span class="project-number">2024</span><div><h3>创新实践</h3><p>大学生创新创业训练计划北京市级项目第一负责人；校级三等奖学金。</p></div></article>
-          <article class="project"><span class="project-number">2023 — 2024</span><div><h3>校园荣誉</h3><p>中国传媒大学“三好学生”；校级单项奖学金；校运会男子 4×400 米团体第一名。</p></div></article>
+          <article class="project">
+            <span class="project-number">2025.08 — 2025.09 · 视频技术工程师</span>
+            <div><h3>纪念抗战胜利 80 周年活动</h3><p>驻守中央广播电视总台梅地亚新闻中心，负责新闻发布会、阅兵盛典及文艺晚会的公共信号切换、调度和全链路分发；使用眼图、示波器等设备进行巡检与故障排查。</p></div>
+          </article>
+          <article class="project">
+            <span class="project-number">2024.07 — 2024.09 · 视频技术工程师助理</span>
+            <div><h3>上海东方传媒技术有限公司（SMT）</h3><p>参与 2024 中超上海、杭州赛区无线微波信号传送系统搭建配置，负责收发端铺设及频率调试校准；学习大型转播车基带/IP 化架构和微波系统现场应用。</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="research" class="container">
+        <div class="section-head">
+          <div><span class="eyebrow">ACADEMIC OUTPUT</span><h2>学术成果。</h2></div>
+          <p>IEEE 国际会议论文，均发表于 2025 iWRF&amp;AT 并被 EI 检索。</p>
+        </div>
+        <div class="projects">
+          <article class="project">
+            <span class="project-number">第一作者 · 2025</span>
+            <div><h3>Design of Wideband Millimeter-Wave Magneto-Electric Dipole Antenna Element and Array for 5G/6G Mobile Communications Applications</h3><p>负责天线设计、参数优化、论文撰写及会议汇报。</p></div>
+            <a href="https://doi.org/10.1109/iWRFAT65352.2025.11103090" target="_blank" rel="noreferrer">DOI: 10.1109/iWRFAT65352.2025.11103090 →</a>
+          </article>
+          <article class="project">
+            <span class="project-number">第三作者 · 2025</span>
+            <div><h3>A Broadband Circularly Polarized Microstrip Antenna Based on Polarization Conversion</h3><p>参与仿真、论文撰写协作与成果汇报。</p></div>
+            <a href="https://doi.org/10.1109/iWRFAT65352.2025.11103043" target="_blank" rel="noreferrer">DOI: 10.1109/iWRFAT65352.2025.11103043 →</a>
+          </article>
         </div>
       </section>
 
       <section id="contact" class="container">
         <div class="contact">
-          <span class="eyebrow">GET IN TOUCH</span>
-          <h2>一起做点有意思的事。</h2>
-          <p>
-            欢迎通过 GitHub 与我交流天线、通信工程、人工智能和广播电视技术相关话题。
-          </p>
-          <div class="buttons">
-            <a
-              class="button primary"
-              href="https://github.com/james0573"
-              target="_blank"
-              rel="noreferrer"
-            >
-              访问 GitHub
-            </a>
-          </div>
+          <span class="eyebrow">CONTACT</span>
+          <h2>欢迎交流合作。</h2>
+          <p>欢迎通过 GitHub 联系我，交流通信工程、射频天线、人工智能与广播电视技术相关机会和项目。</p>
+          <div class="buttons"><a class="button primary" href="https://github.com/James0573" target="_blank" rel="noreferrer">访问 GitHub</a></div>
         </div>
       </section>
     </main>
-
-    <footer class="container">
-      © 2026 Guo Yanheng · Built with GitHub Pages.
-    </footer>
+    <footer class="container">© 2026 Guo Yanheng · Built with GitHub Pages.</footer>
   </body>
 </html>
